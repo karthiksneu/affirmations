@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/customStyles.css'
 
 const Affirmation = () => {
     const [affirmation, setAffirmation] = useState('');
@@ -26,7 +27,13 @@ const Affirmation = () => {
         <div>
             <p>✨ {affirmation} ✨</p>
             {error && <p>{error}</p>}
-            <button onClick={fetchAffirmation}>Get Another Affirmation</button>
+            {/* <button onClick={fetchAffirmation}>Get Another Affirmation</button> */}
+            <div className="button-container">
+                <div className="gradient-bg"></div>
+                <button className="button-content" onClick={fetchAffirmation}>
+                    Hit me again!
+                </button>
+            </div>
         </div>
     );
 };

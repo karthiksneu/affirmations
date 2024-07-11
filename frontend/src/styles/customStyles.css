@@ -1,0 +1,24 @@
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.gradient-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+    border-radius: 6px;
+    z-index: -1;
+    transition: opacity 0.2s ease;
+}
+
+.button-content {
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
