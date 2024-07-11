@@ -1,9 +1,11 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import random
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
+import logging
 
 app = Flask(__name__)
-CORS(app)  # we do this to enable CORS filter for all the routes
+# 
+CORS(app)
 
 # here we are creating a list of affirmations which will be replaced using a db at a later point
 affirmations = [
@@ -39,12 +41,15 @@ affirmations = [
     "I celebrate my achievements and acknowledge my progress."
 ]
 
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/random-affirmation', methods=['GET'])
+@cross_origin()
 def get_random_affirmation():
+    app.logger.info(f'Request received: {request.url}')
     affirmation = random.choice(affirmations)
     return jsonify({'affirmation': affirmation})
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
